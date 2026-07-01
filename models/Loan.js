@@ -43,14 +43,19 @@ const loanSchema = new mongoose.Schema(
     // Loan status
     status: {
       type: String,
-      enum: [
-        "pending",
-        "approved",
-        "rejected",
-        "active",
-        "completed",
-      ],
+      enum: ["pending", "approved", "rejected", "active", "completed"],
       default: "pending",
+    },
+
+    // Rejection Reason
+    rejectionReason: {
+      type: String,
+      default: "",
+    },
+
+    //  Repayment Date
+    repaymentDate: {
+      type: Date,
     },
 
     // Date repayment begins
@@ -65,7 +70,7 @@ const loanSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model("Loan", loanSchema);
